@@ -233,17 +233,17 @@ const isAdmin    = computed(() => props.currentMember?.isAdmin ?? false)
 const canPropose = computed(() => {
     if (!props.currentMember) return false
     return props.currentMember.isSuperAdmin || props.currentMember.isAdmin ||
-           props.currentMember.can?.('watch_party.propose') ?? true
+           (props.currentMember.can?.('watch_party.propose') ?? true)
 })
 const canModerate = computed(() => {
     if (!props.currentMember) return false
     return props.currentMember.isSuperAdmin || props.currentMember.isAdmin ||
-           props.currentMember.can?.('watch_party.moderate')
+           (props.currentMember.can?.('watch_party.moderate') ?? false)
 })
 const canControl = computed(() => {
     if (!props.currentMember) return false
     return props.currentMember.isSuperAdmin || props.currentMember.isAdmin ||
-           props.currentMember.can?.('watch_party.control')
+           (props.currentMember.can?.('watch_party.control') ?? false)
 })
 
 // ── Derived lists ──────────────────────────────────────────────────────────
