@@ -1,11 +1,16 @@
 {
   "name": "Watch Party",
   "slug": "watch-party",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "min_server_version": "1.1.0",
   "tier": "official",
   "zones": [
     "input"
   ],
-  "settings": []
+  "settings": [],
+  "role_permissions": [
+    { "key": "watch_party.propose",  "label": "Propose videos to the watch party queue" },
+    { "key": "watch_party.moderate", "label": "Approve or reject watch party proposals" },
+    { "key": "watch_party.control",  "label": "Control watch party playback (start, pause, seek)" }
+  ]
 }

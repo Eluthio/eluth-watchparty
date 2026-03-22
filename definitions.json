@@ -1,14 +1,15 @@
 {
   "name": "Watch Party",
   "slug": "watch-party",
-  "description": "Propose links, vote on what to watch next, and enjoy content together as a community.",
+  "description": "Propose links, vote on what to watch next, and enjoy content together in sync. Includes role-based permissions, a moderator approval queue, deduplication, and synchronized playback.",
   "author": "Eluthio",
   "tier": "official",
   "min_server_version": "1.1.0",
   "max_server_version": null,
-  "tags": ["social", "voting", "fun"],
+  "tags": ["social", "voting", "fun", "video", "sync"],
   "recommended": true,
   "changelog": {
+    "1.1.0": "Role-based permissions (propose/moderate/control); moderator approval queue; URL deduplication (votes existing instead of duplicate); synchronized watch party playback with Initialising → Synchronising → Playback flow; admin management panel",
     "1.0.6": "Fix network error on propose; add Accept header to all requests",
     "1.0.4": "Added schema.sql for watch party tables; teardown.sql for clean uninstall"
   }
