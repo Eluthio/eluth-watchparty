@@ -27,6 +27,7 @@ jobs:
           cp dist/index.js release/
           cp plugin.json release/
           [ -f schema.sql ] && cp schema.sql release/ || true
+          [ -f teardown.sql ] && cp teardown.sql release/ || true
           cd release && zip -r ../plugin.zip .
 
       - name: Create GitHub Release
