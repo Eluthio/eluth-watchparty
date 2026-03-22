@@ -1,0 +1,14 @@
+{
+  "name": "Watch Party",
+  "slug": "watch-party",
+  "description": "Propose links, vote on what to watch next, and enjoy content together as a community.",
+  "author": "Eluthio",
+  "tier": "official",
+  "min_server_version": "1.1.0",
+  "max_server_version": null,
+  "tags": ["social", "voting", "fun"],
+  "recommended": true,
+  "changelog": {
+    "1.0.4": "Added schema.sql for watch party tables; teardown.sql for clean uninstall"
+  }
+}
