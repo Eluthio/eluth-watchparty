@@ -122,7 +122,11 @@ let pollTimer = null
 function base() { return props.apiBase.replace(/\/$/, '') }
 
 function headers() {
-    return { Authorization: 'Bearer ' + props.authToken, 'Content-Type': 'application/json' }
+    return {
+        Authorization:  'Bearer ' + props.authToken,
+        'Content-Type': 'application/json',
+        Accept:         'application/json',
+    }
 }
 
 function shortenUrl(url) {
@@ -183,11 +187,12 @@ async function propose() {
                 title: newTitle.value.trim() || null,
             }),
         })
-        const data = await res.json()
         if (!res.ok) {
-            formError.value = data.message || 'Failed to add proposal.'
+            const data = await res.json().catch(() => ({}))
+            formError.value = data.message || `Error ${res.status}.`
             return
         }
+        await res.json()
         newUrl.value   = ''
         newTitle.value = ''
         await fetchProposals()

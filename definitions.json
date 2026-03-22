@@ -9,6 +9,7 @@
   "tags": ["social", "voting", "fun"],
   "recommended": true,
   "changelog": {
+    "1.0.6": "Fix network error on propose; add Accept header to all requests",
     "1.0.4": "Added schema.sql for watch party tables; teardown.sql for clean uninstall"
   }
 }
