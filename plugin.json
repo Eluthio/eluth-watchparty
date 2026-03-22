@@ -1,0 +1,8 @@
+{
+  "name": "Watch Party",
+  "slug": "watch-party",
+  "version": "1.0.0",
+  "tier": "official",
+  "zones": ["input"],
+  "settings": []
+}
