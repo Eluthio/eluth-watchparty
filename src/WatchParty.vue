@@ -313,14 +313,14 @@ async function fetchProposals() {
     if (!props.channelId) return
     loading.value = allProposals.value.length === 0
     try {
-        const res = await fetch(`${base()}/api/plugins/watch-party/proposals?channel_id=${props.channelId}`, {
+        const res = await fetch(`${base()}/plugins/watch-party/proposals?channel_id=${props.channelId}`, {
             headers: { Authorization: 'Bearer ' + props.authToken, Accept: 'application/json' },
         })
         if (res.ok) {
             const data = await res.json()
             allProposals.value = data.proposals ?? []
         }
-    } finally {
+    } catch {} finally {
         loading.value = false
     }
 }
@@ -328,7 +328,7 @@ async function fetchProposals() {
 async function fetchSession() {
     if (!props.channelId) return
     try {
-        const res = await fetch(`${base()}/api/plugins/watch-party/session/${props.channelId}`, {
+        const res = await fetch(`${base()}/plugins/watch-party/session/${props.channelId}`, {
             headers: { Authorization: 'Bearer ' + props.authToken, Accept: 'application/json' },
         })
         if (res.ok) {
@@ -412,7 +412,7 @@ function pausePlayer(timecode) {
 
 async function notifyReady() {
     try {
-        await fetch(`${base()}/api/plugins/watch-party/session/ready`, {
+        await fetch(`${base()}/plugins/watch-party/session/ready`, {
             method: 'POST',
             headers: headers(),
             body: JSON.stringify({ channel_id: props.channelId }),
@@ -444,7 +444,7 @@ function unsubscribeFromSession() {
 async function vote(p) {
     voting.value = p.id
     try {
-        const res = await fetch(`${base()}/api/plugins/watch-party/proposals/${p.id}/vote`, {
+        const res = await fetch(`${base()}/plugins/watch-party/proposals/${p.id}/vote`, {
             method: 'POST',
             headers: headers(),
         })
@@ -464,7 +464,7 @@ async function propose() {
     formInfo.value  = ''
     proposing.value = true
     try {
-        const res = await fetch(`${base()}/api/plugins/watch-party/proposals`, {
+        const res = await fetch(`${base()}/plugins/watch-party/proposals`, {
             method: 'POST',
             headers: headers(),
             body: JSON.stringify({
@@ -497,7 +497,7 @@ async function propose() {
 }
 
 async function approve(p) {
-    await fetch(`${base()}/api/plugins/watch-party/proposals/${p.id}/approve`, {
+    await fetch(`${base()}/plugins/watch-party/proposals/${p.id}/approve`, {
         method: 'POST', headers: headers(),
     })
     p.is_approved = true
@@ -507,14 +507,14 @@ async function approve(p) {
 }
 
 async function reject(p) {
-    await fetch(`${base()}/api/plugins/watch-party/proposals/${p.id}/approve`, {
+    await fetch(`${base()}/plugins/watch-party/proposals/${p.id}/approve`, {
         method: 'DELETE', headers: headers(),
     })
     allProposals.value = allProposals.value.filter(x => x.id !== p.id)
 }
 
 async function remove(p) {
-    await fetch(`${base()}/api/plugins/watch-party/proposals/${p.id}`, {
+    await fetch(`${base()}/plugins/watch-party/proposals/${p.id}`, {
         method: 'DELETE', headers: headers(),
     })
     allProposals.value = allProposals.value.filter(x => x.id !== p.id)
@@ -522,7 +522,7 @@ async function remove(p) {
 
 async function clearAll() {
     if (!confirm('Clear all watch party proposals?')) return
-    await fetch(`${base()}/api/plugins/watch-party/proposals?channel_id=${props.channelId}`, {
+    await fetch(`${base()}/plugins/watch-party/proposals?channel_id=${props.channelId}`, {
         method: 'DELETE', headers: headers(),
     })
     allProposals.value = []
@@ -536,7 +536,7 @@ async function startSession(p) {
 
 async function sessionAction(action, extra = {}) {
     try {
-        const res = await fetch(`${base()}/api/plugins/watch-party/session`, {
+        const res = await fetch(`${base()}/plugins/watch-party/session`, {
             method: 'POST',
             headers: headers(),
             body: JSON.stringify({ channel_id: props.channelId, action, ...extra }),
