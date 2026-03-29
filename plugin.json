@@ -1,7 +1,7 @@
 {
   "name": "Watch Party",
   "slug": "watch-party",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "min_server_version": "1.5.5",
   "tier": "official",
   "entry": "index.js",

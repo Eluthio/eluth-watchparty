@@ -26,6 +26,8 @@ jobs:
           mkdir -p release
           cp dist/index.js release/
           cp plugin.json release/
+          cp schema.sql release/
+          cp teardown.sql release/
           cp -r backend release/
           cd release && zip -r ../plugin.zip .
 
